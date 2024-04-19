@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: sqlalchemy_helpers
+Version: 0.0.1
+Requires-Dist: sqlalchemy
+Requires-Dist: marshmallow
+Requires-Dist: flask-restx

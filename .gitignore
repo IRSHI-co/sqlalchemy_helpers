@@ -1,2 +1,4 @@
 /projectenv
 __pycache__
+/build
+/testenv
