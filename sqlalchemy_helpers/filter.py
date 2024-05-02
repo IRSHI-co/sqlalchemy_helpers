@@ -70,7 +70,7 @@ FilterConfigDictType = FieldConfigValueType
 FilterConfigListType = list[FieldConfigValueType]
 FilterConfigType = dict[str, Union[FilterConfigDictType, FilterConfigListType]]
 
-def get_filtered_query(model, args, field_config: FilterConfigType = {}, join_models=[], ignore_delete=False):
+def get_filtered_query(model, args, field_config: FilterConfigType = {}, join_models=[], ignore_deleted=False):
     """
     This function generates a filtered SQLAlchemy query based on the provided model, arguments, and field configuration.
 
@@ -110,7 +110,7 @@ def get_filtered_query(model, args, field_config: FilterConfigType = {}, join_mo
     for join_model in join_models:
         query = query.join(join_model)
         
-    if not ignore_delete:
+    if ignore_deleted:
         filter_arguments.append(model.deleted == False)
     
     return query.filter(*filter_arguments).distinct(model.id)
