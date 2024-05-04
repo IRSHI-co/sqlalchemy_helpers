@@ -32,7 +32,7 @@ def get_paginated_schema(SchemaClass):
     return PaginatedSchema
 
 
-def get_paginated_response_model(response_model):
+def get_paginated_response_model(response_model, model_name='PaginatedResponseModel'):
     """
     This function generates a Flask-RESTPlus model for paginated responses.
 
@@ -45,7 +45,7 @@ def get_paginated_response_model(response_model):
         total count of items, total pages, current page, and boolean fields 
         indicating if there are next or previous pages.
     """
-    return Model('PaginatedResponseModel', {
+    return Model(model_name, {
         'items': fields.List(fields.Nested(response_model)),
         'total_count': fields.Integer,
         'total_page': fields.Integer,
