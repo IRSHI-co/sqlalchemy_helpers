@@ -8,12 +8,12 @@ from flask_restx import inputs
 
 
     
-def get_paginated_schema(Schema):
+def get_paginated_schema(SchemaClass):
     """
     This function generates a Marshmallow schema for paginated responses.
 
     Args:
-        Schema (Schema): The Marshmallow schema of the items to be paginated.
+        SchemaClass (Schema): The Marshmallow schema of the items to be paginated.
 
     Returns:
         PaginatedSchema (Schema): A Marshmallow schema for paginated responses. 
@@ -22,7 +22,7 @@ def get_paginated_schema(Schema):
         indicating if there are next or previous pages.
     """
     class PaginatedSchema(Schema):
-        items = ma_fields.Nested(Schema, many=True)
+        items = ma_fields.Nested(SchemaClass, many=True)
         total_count = ma_fields.Integer()
         total_page = ma_fields.Integer()
         current_page = ma_fields.Integer()
